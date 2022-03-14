@@ -1,11 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { Listing } from "../interfaces/listing";
 
-export const UpdateListing: React.FC<Listing> = ({
-  title,
-  description,
-  price,
-}) => {
+export const UpdateListing = () => {
   const [listing, setListingProperties] = useState({});
 
   const updateListing = (event: ChangeEvent<HTMLInputElement>) => {
