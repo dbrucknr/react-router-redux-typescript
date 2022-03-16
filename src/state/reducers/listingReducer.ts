@@ -4,7 +4,10 @@ export interface ListingsState {
   listings: Listing[];
 }
 
-type Action = { type: "ADD"; payload: Listing };
+type Remove = { type: "REMOVE"; payload: Listing };
+type Add = { type: "ADD"; payload: Listing };
+type RetrieveAll = { type: "GET-ALL" };
+type Action = Add | Remove | RetrieveAll;
 
 const initialState = {
   listings: [],
@@ -18,11 +21,12 @@ export const listingReducer = (
     case "ADD":
       console.log("ADD", action.payload);
       return { ...state, listings: [...state.listings, action.payload] };
-    // case "remove":
-    //   return state.listings.filter(({ id }) => id !== action.payload.id);
+    case "REMOVE":
+      return {
+        ...state,
+        listings: state.listings.filter(({ id }) => id !== action.payload.id),
+      };
     default:
       return state;
   }
 };
-
-// export { reducer };

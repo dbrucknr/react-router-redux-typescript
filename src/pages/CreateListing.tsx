@@ -1,11 +1,9 @@
 import { useState, ChangeEvent } from "react";
-import { Listing } from "../interfaces/listing";
+import { Actions } from "../state/actions/listingActions";
 
-interface CreateListingProps {
-  create(listing: Listing): void;
-}
+export const CreateListing = () => {
+  const { create } = Actions();
 
-export const CreateListing: React.FC<CreateListingProps> = ({ create }) => {
   const [listing, setListing] = useState({
     id: "3",
     title: "",
