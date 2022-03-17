@@ -15,5 +15,9 @@ export const Actions = () => {
     return listings;
   };
 
-  return { create, retrieve };
+  const retrieveSpecific = (id: string | undefined) => {
+    return listings.listings.find((listing: Listing) => listing.id === id);
+  };
+
+  return { create, retrieve, retrieveSpecific };
 };
