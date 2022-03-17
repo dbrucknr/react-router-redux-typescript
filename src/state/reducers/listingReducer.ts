@@ -23,7 +23,12 @@ const initialState = {
 
 const actionTable = {
   ALL: (state: ListingsState) => state,
-  SPECIFIC: (state: ListingsState) => state,
+  SPECIFIC: (state: ListingsState, action: Actions) => ({
+    ...state,
+    listings: state.listings.filter(
+      (listing: Listing) => listing.id === action.payload.id
+    ),
+  }),
   ADD: (state: ListingsState, action: Actions) => ({
     ...state,
     listings: [...state.listings, action.payload],
@@ -46,7 +51,12 @@ export const listingReducer = (
   state: ListingsState = initialState,
   action: Actions
 ) => {
-  const { type } = action;
-  const handler = actionTable[type];
-  return handler ? handler(state, action) : state;
+  try {
+    const { type } = action;
+    const handler = actionTable[type];
+    return handler ? handler(state, action) : state;
+  } catch (error) {
+    console.error(error);
+    return state;
+  }
 };
