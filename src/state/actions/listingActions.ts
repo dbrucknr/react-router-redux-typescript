@@ -19,5 +19,9 @@ export const Actions = () => {
     return listings.listings.find((listing: Listing) => listing.id === id);
   };
 
-  return { create, retrieve, retrieveSpecific };
+  const update = (listing: Listing) => {
+    return dispatch({ type: ActionTypes.UPDATE, payload: listing });
+  };
+
+  return { create, retrieve, retrieveSpecific, update };
 };

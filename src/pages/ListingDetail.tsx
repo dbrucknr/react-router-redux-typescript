@@ -1,23 +1,24 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ListingsState } from "../state/reducers/listingReducer";
+import { Listing } from "../interfaces/listing";
 import { Actions } from "../state/actions/listingActions";
 
 export const ListingDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const { retrieveSpecific } = Actions();
-  const [listing, setListing] = useState<ListingsState["listings"] | any>();
+  const [listing, setListing] = useState<Listing>();
 
   useEffect(() => {
     const data = retrieveSpecific(id);
-    console.log(data);
     setListing(data);
   }, [id, retrieveSpecific]);
+
   return (
     <>
       <div>
         Detail Page {listing?.id} {listing?.title} {listing?.description}{" "}
         {listing?.price}
+        <Link to={`/update-listing/${listing?.id}`}>Update</Link>
       </div>
     </>
   );
