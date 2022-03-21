@@ -14,7 +14,7 @@ export enum ActionTypes {
 
 export interface Actions {
   type: ActionTypes;
-  payload: Listing;
+  payload: Listing; // can be optional
 }
 
 const initialState = {

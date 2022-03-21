@@ -40,8 +40,7 @@ export const UpdateListing = () => {
         type="text"
         name="id"
         placeholder="ID"
-        defaultValue={listing.id}
-        value={listing.id}
+        value={listing?.id}
         onChange={handleChange}
       />
       <input

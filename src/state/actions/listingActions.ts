@@ -11,11 +11,13 @@ export const Actions = () => {
     return dispatch({ type: ActionTypes.ADD, payload: listing });
   };
 
-  const retrieve = () => {
+  const retrieveAll = () => {
+    // return dispatch({ type: ActionTypes.ALL }); // Add this once API call is added
     return listings;
   };
 
   const retrieveSpecific = (id: string | undefined) => {
+    // return dispatch({ type: ActionTypes.SPECIFIC, payload: id }) // Add this once API call is added
     return listings.listings.find((listing: Listing) => listing.id === id);
   };
 
@@ -23,5 +25,5 @@ export const Actions = () => {
     return dispatch({ type: ActionTypes.UPDATE, payload: listing });
   };
 
-  return { create, retrieve, retrieveSpecific, update };
+  return { create, retrieveAll, retrieveSpecific, update };
 };

@@ -5,13 +5,13 @@ import { Actions } from "../state/actions/listingActions";
 import { Link } from "react-router-dom";
 
 export const Listings = () => {
-  const { retrieve } = Actions();
+  const { retrieveAll } = Actions();
   const [listings, setListings] = useState<ListingsState["listings"]>([]);
 
   useEffect(() => {
-    const data = retrieve();
+    const data = retrieveAll();
     setListings(data.listings);
-  }, [retrieve]);
+  }, [retrieveAll]);
 
   return (
     <>

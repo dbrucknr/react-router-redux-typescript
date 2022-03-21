@@ -10,7 +10,7 @@ export const ListingDetail = () => {
 
   useEffect(() => {
     const data = retrieveSpecific(id);
-    setListing(data);
+    setListing(data as Listing);
   }, [id, retrieveSpecific]);
 
   return (
