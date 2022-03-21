@@ -19,6 +19,7 @@ export const ListingDetail = () => {
         Detail Page {listing?.id} {listing?.title} {listing?.description}{" "}
         {listing?.price}
         <Link to={`/update-listing/${listing?.id}`}>Update</Link>
+        <Link to={`/remove-listing/${listing?.id}`}>Remove</Link>
       </div>
     </>
   );

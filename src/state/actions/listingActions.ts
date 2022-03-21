@@ -25,5 +25,9 @@ export const Actions = () => {
     return dispatch({ type: ActionTypes.UPDATE, payload: listing });
   };
 
-  return { create, retrieveAll, retrieveSpecific, update };
+  const remove = (listing: Listing) => {
+    return dispatch({ type: ActionTypes.REMOVE, payload: listing });
+  };
+
+  return { create, retrieveAll, retrieveSpecific, update, remove };
 };
