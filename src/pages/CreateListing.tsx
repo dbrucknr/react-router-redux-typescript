@@ -19,9 +19,8 @@ export const CreateListing = () => {
     }));
   };
 
-  const addListing = () => {
-    create(listing);
-  };
+  const addListing = () => create(listing);
+
   return (
     <>
       <input

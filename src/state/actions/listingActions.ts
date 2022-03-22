@@ -2,17 +2,34 @@ import { Listing } from "../../interfaces/listing";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../reducers/rootReducer";
 import { ActionTypes } from "../reducers/listingReducer";
+import { ListingService } from "../../services/listingService";
 
 export const Actions = () => {
   const dispatch = useDispatch();
   const listings = useSelector((state: RootState) => state.listings);
 
-  const create = (listing: Listing) => {
-    return dispatch({ type: ActionTypes.ADD, payload: listing });
+  const create = async (listing: Listing) => {
+    try {
+      const response = await ListingService.Create(listing);
+      // if (response.ok) {
+      //   dispatch({ type: ActionTypes.ADD, payload: response.body });
+      // }
+      // Mocked:
+      dispatch({ type: ActionTypes.ADD, payload: response });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const retrieveAll = () => {
-    // return dispatch({ type: ActionTypes.ALL }); // Add this once API call is added
+  const retrieveAll = async () => {
+    // try {
+    //   const response = await ListingService.RetrieveAll();
+    //   if (response.ok) {
+    //     dispatch({ type: ActionTypes.ALL, payload: response.body });
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    // }
     return listings;
   };
 

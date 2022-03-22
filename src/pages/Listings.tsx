@@ -9,8 +9,10 @@ export const Listings = () => {
   const [listings, setListings] = useState<ListingsState["listings"]>([]);
 
   useEffect(() => {
-    const data = retrieveAll();
-    setListings(data.listings);
+    (async () => {
+      const data = await retrieveAll();
+      setListings(data.listings as Listing[]);
+    })();
   }, [retrieveAll]);
 
   return (
